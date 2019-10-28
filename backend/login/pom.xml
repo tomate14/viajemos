@@ -11,8 +11,8 @@
 	<groupId>com.example</groupId>
 	<artifactId>viajemos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>viajemos</name>
-	<description>Aplicacion de viajes</description>
+	<name>login</name>
+	<description>Servicio de login de la aplicacion Viajes</description>
 
 	<properties>
 		<java.version>11</java.version>

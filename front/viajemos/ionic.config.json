@@ -1,7 +1,5 @@
 {
-  "name": "tramita2",
-  "integrations": {
-    "cordova": {}
-  },
+  "name": "viajemos",
+  "integrations": {},
   "type": "angular"
 }

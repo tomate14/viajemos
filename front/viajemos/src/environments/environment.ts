@@ -3,12 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  url: 'http://ec2-3-19-142-252.us-east-2.compute.amazonaws.com:8080/tramitados'
-  // url: "http://localhost:8080"
+  production: false
 };
-
-export const URL_LOGIN = environment.url+"/authenticate";
 
 /*
  * For easier debugging in development mode, you can import the following file

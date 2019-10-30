@@ -1,5 +1,6 @@
 package com.example.viajemos.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;

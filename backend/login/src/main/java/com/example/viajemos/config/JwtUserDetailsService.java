@@ -22,22 +22,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 		Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
 		UserDetails userDet = new User(usuario.get().getEmail(), usuario.get().getPassword(),new ArrayList<>());
 		return userDet;
-		
-//		if ("javainuse".equals(email)) {
-//			return new User("javainuse", "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6",
-//					new ArrayList<>());
-//		} else {
-//			throw new UsernameNotFoundException("User not found with username: " + email);
-//		}
+
 	}
-//	@Override
-//	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-////		Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
-////		UserDetails userDet = new User(usuario.get().getEmail(), usuario.get().getPassword(),new ArrayList<>());
-////		return userDet;
-////		if(!usuario.isEmpty()) {
-////		}else {
-////			throw new UsernameNotFoundException("Usuario no encontrado con el nombre: " + email);
-////		}
-//	}
+
 }

@@ -17,5 +17,5 @@ public interface IUsuarioRepository extends CrudRepository<Usuario, Integer> {
 	
 	public List<Usuario> findAll();
 	
-	public Usuario save(Usuario establecimiento);
+	public Usuario save(Usuario usuario);
 }

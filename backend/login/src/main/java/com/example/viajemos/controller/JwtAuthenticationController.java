@@ -47,8 +47,10 @@ public class JwtAuthenticationController {
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 		final UserDetails userDetails = userDetailsService
 				.loadUserByUsername(authenticationRequest.getUsername());
+		Optional<Usuario> user = this.usuarioService.getUsuario(authenticationRequest.getUsername());
+		
 		final String token = jwtTokenUtil.generateToken(userDetails);
-		return ResponseEntity.ok(new JwtResponse(token));
+		return new ResponseEntity<Object>(new JwtResponse(token,user.get()), HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/registro")
@@ -61,7 +63,7 @@ public class JwtAuthenticationController {
 				final UserDetails userDetails = userDetailsService
 						.loadUserByUsername(newUser.getEmail());
 				final String token = jwtTokenUtil.generateToken(userDetails);
-				return ResponseEntity.ok(new JwtResponse(token));				
+				return ResponseEntity.ok(new JwtResponse(token,newUser));				
 			}else {
 				return new ResponseEntity<Object>("Usuario ya registrado en el sistema", HttpStatus.ACCEPTED);
 			}

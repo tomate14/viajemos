@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -38,6 +39,7 @@ export function provideConfig() {
             FormsModule,
             IonicModule.forRoot(), 
             AppRoutingModule, 
+            HttpClientModule,
             SocialLoginModule],
   providers: [
     StatusBar,

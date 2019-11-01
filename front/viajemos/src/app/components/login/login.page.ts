@@ -34,7 +34,7 @@ export class LoginPage {
             this.loginService._usuario.idCiudad = response.usuario.idCiudad;
             this.loginService._usuario.token = response.token;
 
-            this.router.navigateByUrl('/start');
+            //this.router.navigateByUrl('/start');
         })
         
       }

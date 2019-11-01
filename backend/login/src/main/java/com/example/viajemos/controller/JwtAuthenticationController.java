@@ -12,9 +12,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.example.viajemos.config.JwtTokenUtil;
 import com.example.viajemos.config.JwtUserDetailsService;
@@ -74,6 +76,16 @@ public class JwtAuthenticationController {
 		}
 	}
 	
+	@GetMapping(value = "/validate")
+	public boolean getTest() {
+		//Url de ejemplo para llamar otro rest
+		final String uri = "http://localhost:8081/hello";
+
+	    RestTemplate restTemplate = new RestTemplate();
+	    String result = restTemplate.getForObject(uri, String.class);
+	    System.out.println(result);
+	    return result == null;
+	}
 	
 	
 	private void authenticate(String username, String password) throws Exception {

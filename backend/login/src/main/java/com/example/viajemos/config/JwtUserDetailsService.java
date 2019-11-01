@@ -23,17 +23,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
 		UserDetails userDet = new User(usuario.get().getEmail(), usuario.get().getPassword(),new ArrayList<>());
-		try {
-			final String uri = "localhost:8081/hello";
-
-		    RestTemplate restTemplate = new RestTemplate();
-		    String result = restTemplate.getForObject(uri, String.class);
-		    System.out.println(result);
-				
-		} catch (Exception e) {
-			System.out.println();
-			// TODO: handle exception
-		}
+		
 		return userDet;
 
 	}

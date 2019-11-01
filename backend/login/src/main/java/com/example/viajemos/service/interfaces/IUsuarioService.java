@@ -14,4 +14,6 @@ public interface IUsuarioService {
 	
 	public Optional<Usuario> getUsuario(String email) throws Exception;
 	
+	public boolean resetPassword(String email) throws Exception;
+	
 }

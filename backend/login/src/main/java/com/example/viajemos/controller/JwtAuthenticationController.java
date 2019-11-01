@@ -20,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.viajemos.config.JwtTokenUtil;
 import com.example.viajemos.config.JwtUserDetailsService;
+import com.example.viajemos.dto.CambioEmail;
 import com.example.viajemos.dto.DTOUsuario;
 import com.example.viajemos.dto.JwtRequest;
 import com.example.viajemos.dto.JwtResponse;
@@ -75,6 +76,21 @@ public class JwtAuthenticationController {
 			return response;
 		}
 	}
+	
+	@PostMapping(value = "/resetpassword")
+	public ResponseEntity<Object> resetPassword(@RequestBody CambioEmail emailDestino) throws Exception {
+		try {
+			this.usuarioService.resetPassword(emailDestino.getEmail());
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}finally {
+			return ResponseEntity.ok("Reseteo exitoso");
+		}
+		
+	}
+	
 	
 	@GetMapping(value = "/validate")
 	public boolean getTest() {

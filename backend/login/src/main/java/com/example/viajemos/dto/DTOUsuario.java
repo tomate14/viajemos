@@ -34,6 +34,13 @@ public class DTOUsuario {
 		this.idCiudad = idCiudad;
 	}
 	
+	public DTOUsuario(String nombre2, String apellido2, String email2, int idCiudad2) {
+		this.nombre = nombre2;
+		this.apellido = apellido2;
+		this.email = email2;
+		this.idCiudad = idCiudad2;
+	}
+
 	public Integer getIdUsuario() {
 		return idUsuario;
 	}

@@ -28,9 +28,28 @@ ion-icon{
   text-transform: none;
 }
 
+.img-login, .img-login-v{
+  max-width: 60%;
+  font-size: 80px;
+  font-family: 'Courgette';
+}
+
+.img-login-v{
+  font-size: 120px;
+  font-family: 'Lakki Reddy';
+  margin-top: 80px;
+}
+
+/*.img-login-v {
+  font-size: 100px;
+  font-family: "Lakki Reddy";
+  margin-top: 56px;
+}
 .img-login{
   max-width: 60%;
-}
+  font-size: 50px;
+  font-family: "Courgette";
+}*/
 
 @media (max-width: 500px) {
   .img-login {
@@ -38,6 +57,7 @@ ion-icon{
   }
 }
 @media (min-height: 680px) {
+  
   #card-login{
     height: 50%;
   }
@@ -141,4 +161,5 @@ ion-icon{
     -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
   }
+
 }

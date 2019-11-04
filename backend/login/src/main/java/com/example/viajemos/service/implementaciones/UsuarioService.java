@@ -56,7 +56,7 @@ public class UsuarioService implements IUsuarioService{
 				String newPassword = UUID.randomUUID().toString();
 				usuario.get().setPassword(bcrypt.encode(newPassword));
 				this.usuarioRepository.save(usuario.get());
-				return this.enviarEmailRepository.enviarEmail(email, newPassword, "Hola como estas", "Cuerpo del email");			
+				return this.enviarEmailRepository.enviarEmail(email, newPassword, "Viajemos> cambio de password", "Para cambiar su password haga click en presione aqui. Su password nueva es: ");			
 			}			
 		} catch (Exception e) {
 			throw new Exception(e.getCause());

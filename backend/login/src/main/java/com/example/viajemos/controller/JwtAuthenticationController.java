@@ -23,6 +23,7 @@ import com.example.viajemos.config.JwtUserDetailsService;
 import com.example.viajemos.dto.DTOUsuario;
 import com.example.viajemos.dto.JwtRequest;
 import com.example.viajemos.dto.JwtResponse;
+import com.example.viajemos.dto.Respuesta;
 import com.example.viajemos.dto.mailer.CambioEmail;
 import com.example.viajemos.entity.Usuario;
 import com.example.viajemos.service.interfaces.IUsuarioService;
@@ -77,16 +78,20 @@ public class JwtAuthenticationController {
 		}
 	}
 	
+	@SuppressWarnings("finally")
 	@PostMapping(value = "/resetpassword")
-	public ResponseEntity<Object> resetPassword(@RequestBody CambioEmail emailDestino) throws Exception {
+	public ResponseEntity<Respuesta> resetPassword(@RequestBody CambioEmail emailDestino) throws Exception {
+		ResponseEntity<Respuesta> response = null;
 		try {
-			this.usuarioService.resetPassword(emailDestino.getEmail());
+			response = this.usuarioService.resetPassword(emailDestino.getEmail());
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println(e.getMessage());
+			response = new ResponseEntity<Respuesta>(
+					new Respuesta("La operacion no se realizo con exito "+e.getCause().toString(),HttpStatus.INTERNAL_SERVER_ERROR), 
+					HttpStatus.INTERNAL_SERVER_ERROR);
 		}finally {
-			return ResponseEntity.ok("Reseteo exitoso");
+			return response;
 		}
 		
 	}

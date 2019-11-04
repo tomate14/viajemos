@@ -1,40 +1,38 @@
 package com.example.viajemos.repository.implementacion;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.client.RestTemplate;
 
+import com.example.viajemos.dto.Respuesta;
+import com.example.viajemos.dto.mailer.DatosMail;
 import com.example.viajemos.repository.IEnviarEmail;
 
 @Repository
 public class EnviadorMail implements IEnviarEmail{
 
-	@Autowired
-	private JavaMailSender javaMailSender;	
-	
-//	@Value("${spring.mail.username}")
-//	private String email_from;
-	
-//	public EnviadorMail(JavaMailSender javaMailSender) {
-//        this.javaMailSender = javaMailSender;
-//    }
+//	@Autowired
+//	private JavaMailSender javaMailSender;	
+
 	
 	@Override
-	public boolean enviarEmail(String email, String newPassword, String titulo, String mensaje) {
+	public ResponseEntity<Respuesta> enviarEmail(String email, String newPassword, String titulo, String mensaje) {
+		
+		final String uri = "http://localhost:8082/sendmail";
 
-        
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo(email);
+	    RestTemplate restTemplate = new RestTemplate();
+	    
+	    DatosMail datos = new DatosMail(email, newPassword, titulo, mensaje);
+	    ResponseEntity<Respuesta> result = null;
+	    try {
+	    	result = restTemplate.postForEntity(uri,datos, Respuesta.class);
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			// TODO: handle exception
+		}
+	    return result;
 
-        msg.setSubject(titulo);
-        msg.setText(mensaje+ " "+newPassword);
-        msg.setFrom("viajemosapp@gmail.com");
-        
-        javaMailSender.send(msg);
-        
-        return true;
 		
 	}
 

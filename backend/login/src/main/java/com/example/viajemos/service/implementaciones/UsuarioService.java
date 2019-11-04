@@ -1,15 +1,16 @@
 package com.example.viajemos.service.implementaciones;
 
-import java.nio.charset.Charset;
 import java.util.Optional;
-import java.util.Random;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.viajemos.dto.DTOUsuario;
+import com.example.viajemos.dto.Respuesta;
 import com.example.viajemos.entity.Usuario;
 import com.example.viajemos.repository.IEnviarEmail;
 import com.example.viajemos.repository.IUsuarioRepository;
@@ -48,7 +49,7 @@ public class UsuarioService implements IUsuarioService{
 	}
 
 	@Override
-	public boolean resetPassword(String email) throws Exception {
+	public ResponseEntity<Respuesta> resetPassword(String email) throws Exception {
 		try {
 			Optional<Usuario> usuario = this.usuarioRepository.findByEmail(email);
 			if(usuario.isPresent()) {
@@ -59,8 +60,9 @@ public class UsuarioService implements IUsuarioService{
 			}			
 		} catch (Exception e) {
 			throw new Exception(e.getCause());
+//			return new ResponseEntity<Respuesta>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return false;
+		return null;
 	}
 
 

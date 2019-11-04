@@ -1,4 +1,4 @@
-package com.example.viajemos.dto;
+package com.example.viajemos.dto.mailer;
 
 import java.io.Serializable;
 

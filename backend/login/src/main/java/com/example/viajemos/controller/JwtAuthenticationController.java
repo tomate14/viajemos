@@ -20,10 +20,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.viajemos.config.JwtTokenUtil;
 import com.example.viajemos.config.JwtUserDetailsService;
-import com.example.viajemos.dto.CambioEmail;
 import com.example.viajemos.dto.DTOUsuario;
 import com.example.viajemos.dto.JwtRequest;
 import com.example.viajemos.dto.JwtResponse;
+import com.example.viajemos.dto.mailer.CambioEmail;
 import com.example.viajemos.entity.Usuario;
 import com.example.viajemos.service.interfaces.IUsuarioService;
 
